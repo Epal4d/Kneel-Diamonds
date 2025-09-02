@@ -6,13 +6,22 @@ export const styleOptions = async () => {
         <div class="customer-input">
         <h3> What style would you like</h3>
     `
-    for (const style of styles) {
+
+    /* for (const style of styles) {
         html += `
             <input type="radio" name="style" value="${style.id}"/> ${style.style}
         `
     }
-    html += `
-                </div>
+        */
+       const divStringArray = styles.map(
+        (style) => {
+            return `<div>
+            <input type ='radio' name='style' value='${style.id}'/> ${style.style} 
             `
+        }
+       )
+       html += divStringArray.join("")
+
     return html
+    
 }
