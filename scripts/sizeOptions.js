@@ -7,14 +7,13 @@ const sizes = await response.json();
     <div class="customer-input">
     <h3> What size would you like</h3>
     `
-    for (const size of sizes) {
-        html += `<input type="radio" name="size" value="${size.id}"/> ${size.carets} Carets 
-        `;
-    }
+    const divStringArray = sizes.map(
+        (size) => {
+            return `<div>
+            <input type ='radio' name='size' value='${size.id}'/> ${size.carets} Carets`
+        }
+    )
+    html += divStringArray.join("")
 
-    html += `
-                </div>
-
-            `
     return html
 }
